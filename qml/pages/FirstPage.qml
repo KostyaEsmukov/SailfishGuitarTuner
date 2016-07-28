@@ -30,10 +30,31 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.guitartuner.recordfacade 1.0
 
 
 Page {
     id: page
+
+    property bool recording: false
+    property int frequency: -1;
+
+    RecordFacade {
+        id: recordFacade
+    }
+
+    function onFreqTick() {
+        frequency = recordFacade.getFrequency();
+    }
+
+    Timer {
+        id: freqShowTimer
+        running: false
+        repeat: true
+        interval: 10
+        onTriggered: onFreqTick()
+    }
+
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
@@ -66,6 +87,34 @@ Page {
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
+
+            Text {
+                 id: freqText
+                 text: frequency
+             }
+
+            Button {
+                    text: "Record"
+                    width: parent.width
+                    onClicked: {
+
+                        if (!recording) {
+                            // start
+
+                            recording = true;
+                            recordFacade.startRecord();
+                            freqShowTimer.start();
+
+                        } else {
+                            // stop
+
+                            freqShowTimer.stop();
+                            recordFacade.stopRecord();
+                            recording = false;
+                            frequency = -1;
+                        }
+                    }
+                }
         }
     }
 }

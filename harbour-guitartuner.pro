@@ -14,7 +14,9 @@ TARGET = harbour-guitartuner
 
 CONFIG += sailfishapp
 
-SOURCES += src/harbour-guitartuner.cpp
+SOURCES += src/harbour-guitartuner.cpp \
+    src/recorder.cpp \
+    src/recordfacade.cpp
 
 OTHER_FILES += qml/harbour-guitartuner.qml \
     qml/cover/CoverPage.qml \
@@ -38,3 +40,8 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/harbour-guitartuner-de.ts
 
+HEADERS += \
+    src/recorder.h \
+    src/recordfacade.h
+
+QT += multimedia
