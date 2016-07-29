@@ -23,6 +23,8 @@ RecordResultComputation::RecordResultComputation()
     ZeroCross<int16_t>::Config cross_config({Recorder::rate, defaultNbFrame, defaultFreqMin, defaultFreqMax});
     cross = new ZeroCross<int16_t>(cross_config);
 
+    scale = new Scale();
+
     Reset();
 }
 
@@ -31,6 +33,7 @@ RecordResultComputation::~RecordResultComputation()
 {
     delete high_filter;
     delete cross;
+    delete scale;
 }
 
 /// reset analyse values
@@ -92,7 +95,7 @@ bool RecordResultComputation::getResult(RecordResult &recordResult, char * buf, 
         int n, o = 0;
         double d = 0;
 
-        n = FindNote(cross->Freq(), o, d);
+        n = scale->FindNote(cross->Freq(), o, d);
 
         recordResult.octave = o;
         recordResult.note = n;
@@ -129,7 +132,7 @@ bool RecordResultComputation::getResult(RecordResult &recordResult, char * buf, 
     }
 }
 
-
+/*
 int RecordResultComputation::FindNote(double freq, int &octave, double &deviation)
 {
     assert (freq > 0);
@@ -138,8 +141,6 @@ int RecordResultComputation::FindNote(double freq, int &octave, double &deviatio
     deviation = 0.2;
     return 3;
 
-
-    /*
     if (!freq_setted) {
         std::cerr << "Scale " << __func__ << ": notes not setted" << std::endl;
         ConstructEqualTemperament();
@@ -164,5 +165,6 @@ int RecordResultComputation::FindNote(double freq, int &octave, double &deviatio
 
     return note;
 
-    */
 }
+
+    */

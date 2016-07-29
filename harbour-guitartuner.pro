@@ -19,6 +19,7 @@ SOURCES += src/harbour-guitartuner.cpp \
     src/recordfacade.cpp \
     src/vendor/LinearFilter.cpp \
     src/vendor/ZeroCross.cpp \
+    src/vendor/Scale.cpp \
     src/strings/basestrings.cpp \
     src/strings/standardguitar.cpp \
     src/recordresultcomputation.cpp
@@ -50,6 +51,7 @@ HEADERS += \
     src/recordfacade.h \
     src/vendor/LinearFilter.hpp \
     src/vendor/ZeroCross.hpp \
+    src/vendor/Scale.hpp \
     src/strings/basestrings.h \
     src/strings/standardguitar.h \
     src/recordresultcomputation.h

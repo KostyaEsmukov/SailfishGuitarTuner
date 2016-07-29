@@ -5,6 +5,7 @@
 
 #include "vendor/LinearFilter.hpp"
 #include "vendor/ZeroCross.hpp"
+#include "vendor/Scale.hpp"
 
 
 struct RecordResult {
@@ -36,6 +37,7 @@ private:
 
     LinearFilter<int16_t> *high_filter;
     ZeroCross<int16_t> *cross;
+    Scale *scale;
 
     bool updated;
     int note_found, octave_found, count_found, count_not_found;
@@ -51,7 +53,7 @@ private:
     void ResetDeviation();
     void UpdateDeviation(double d);
     void SetNotFound();
-    int FindNote(double freq, int &octave, double &deviation);
+    // int FindNote(double freq, int &octave, double &deviation);
 
 
 signals:
