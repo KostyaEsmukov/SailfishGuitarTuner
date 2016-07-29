@@ -35,6 +35,7 @@
 #include <sailfishapp.h>
 
 #include "recordfacade.h"
+#include "wrapper.h"
 
 
 int main(int argc, char *argv[])
@@ -60,6 +61,8 @@ int main(int argc, char *argv[])
     // For details see:
     // https://harbour.jolla.com/faq#1.5.0
     qmlRegisterType<RecordFacade>("harbour.guitartuner.recordfacade", 1, 0, "RecordFacade");
+    qmlRegisterType<Wrapper>("harbour.guitartuner.wrapper", 1, 0, "Wrapper");
+    qmlRegisterType<QStringsResult>("harbour.guitartuner.QStringsResult", 1, 0, "QStringsResult");
 
     // Start the application.
     v->setSource(SailfishApp::pathTo("qml/harbour-guitartuner.qml"));

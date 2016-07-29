@@ -30,18 +30,43 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.guitartuner.wrapper 1.0
 
 import "../Views"
 
 Page {
 
     id: page
+
+    Wrapper {
+        id: wrapper
+    }
+
     Tuner {
+        id: tuner
         x:0
         y:0
         height: parent.height / 2
         width: parent.width
     }
+
+
+    function onFreqTick() {
+        var r = wrapper.getStringsResult();
+        tuner.needleAngle = 90 * r.deviation
+        for (var i = 0; i < 4; i++) {
+            indicators[i].color = Theme.primaryColor
+        }
+        indicators[r.stringIdx].color = Theme.highlightBackgroundColor;
+    }
+
+    Timer {
+        running: true
+        repeat: true
+        interval: 10
+        onTriggered: onFreqTick()
+    }
+
 
     Image {
         id: ukuHead
@@ -92,7 +117,7 @@ Page {
         width: 100
         height: 100
         text: "G"
-        color: Theme.primaryColor//down ? Theme.primaryColor : Theme.highlightBackgroundColor
+        color: Theme.highlightBackgroundColor // Theme.primaryColordown ? Theme.primaryColor : Theme.highlightBackgroundColor
     }
     Component.onCompleted: {
         indicators = [string0, string1, string2, string3]
