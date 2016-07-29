@@ -4,7 +4,7 @@ Recorder::Recorder(QObject *parent) : QObject(parent) {
     _recording = false;
 
     QAudioFormat format;
-    format.setSampleRate(8000);
+    format.setSampleRate(Recorder::rate);
     format.setChannelCount(1);
     format.setSampleSize(8);
     format.setCodec("audio/pcm");
@@ -36,14 +36,8 @@ void Recorder::stopRecord() {
     _audioInput->stop();
 }
 
-int Recorder::getData(float * buf, int bufSize) {
-    char * charbuf = new char[bufSize];
-    int read = _ioDevice->read(charbuf, bufSize);
-    for (int i = 0; i < read; i++) {
-        buf[i] = charbuf[i] / (sizeof(char) * 255);
-    }
-
-    delete[] buf;
+int Recorder::getData(char * buf, int bufSize) {
+    int read = _ioDevice->read(buf, bufSize);
     return read;
 }
 

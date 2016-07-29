@@ -8,6 +8,7 @@
 
 struct StringsResult {
     int stringIdx;
+    float deviation;
 };
 
 class BaseStrings : public QObject

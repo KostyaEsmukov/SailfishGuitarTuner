@@ -19,8 +19,10 @@ public:
 
     void startRecord();
     void stopRecord();
-    int getData(float * buf, int bufSize);
+    int getData(char * buf, int bufSize);
     bool isRecording() { return _recording; }
+
+    static const int rate = 16000;
 
 private:
     QAudioInput *_audioInput;

@@ -3,7 +3,7 @@
 
 
 
-virtual void StandardGuitar::getResult(RecordResult &recordResult, StringsResult &stringsResult) {
+void StandardGuitar::getResult(RecordResult &recordResult, StringsResult &stringsResult) {
 
 
     stringsResult.stringIdx = 0;  // todo

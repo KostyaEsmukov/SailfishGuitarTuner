@@ -44,7 +44,7 @@ Page {
     }
 
     function onFreqTick() {
-        frequency = recordFacade.getFrequency();
+        frequency = recordFacade.getResultFreq();
     }
 
     Timer {

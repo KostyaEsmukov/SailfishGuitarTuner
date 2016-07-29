@@ -12,16 +12,16 @@
 # The name of your application
 TARGET = harbour-guitartuner
 
-CONFIG += sailfishapp
+CONFIG += c++11 sailfishapp
 
 SOURCES += src/harbour-guitartuner.cpp \
     src/recorder.cpp \
     src/recordfacade.cpp \
-    src/vendor/PitchDetection.cpp \
     src/vendor/LinearFilter.cpp \
     src/vendor/ZeroCross.cpp \
     src/strings/basestrings.cpp \
-    src/strings/standardguitar.cpp
+    src/strings/standardguitar.cpp \
+    src/recordresultcomputation.cpp
 
 OTHER_FILES += qml/harbour-guitartuner.qml \
     qml/cover/CoverPage.qml \
@@ -48,10 +48,10 @@ TRANSLATIONS += translations/harbour-guitartuner-de.ts
 HEADERS += \
     src/recorder.h \
     src/recordfacade.h \
-    src/vendor/PitchDetection.hpp \
     src/vendor/LinearFilter.hpp \
     src/vendor/ZeroCross.hpp \
     src/strings/basestrings.h \
-    src/strings/standardguitar.h
+    src/strings/standardguitar.h \
+    src/recordresultcomputation.h
 
 QT += multimedia

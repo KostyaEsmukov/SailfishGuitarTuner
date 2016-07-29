@@ -11,11 +11,9 @@
 #include <QDebug>
 
 #include "recorder.h"
+#include "recordresultcomputation.h"
 
-struct RecordResult {
-    double deviation, frequency;
-    int note, octave;
-};
+
 
 class RecordFacade : public QObject
 {
@@ -29,11 +27,16 @@ public:
     Q_INVOKABLE void startRecord();
     Q_INVOKABLE void stopRecord();
     Q_INVOKABLE bool getResult(RecordResult &recordResult);
+    Q_INVOKABLE double getResultFreq();
     Q_INVOKABLE bool isRecording();
 
 
 private:
+    static const int bufSize = 2048;
+    char * buf;
+
     Recorder *_recorder;
+    RecordResultComputation *_recordResultComputation;
 
 
 signals:
