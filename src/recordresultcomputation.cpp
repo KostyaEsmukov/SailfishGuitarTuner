@@ -111,10 +111,11 @@ bool RecordResultComputation::getResult(RecordResult &recordResult, int16_t * bu
         }
         else if (count_found++ >= nbConfirm) {
             count_not_found = 0;
-            UpdateDeviation(d);
-
-            recordResult.deviation = deviation_sum / nb_deviation;
-            recordResult.frequency = cross->Freq();
+            UpdateDeviation(d);            
+            _recordResult.octave = o;
+            _recordResult.note = n;
+            _recordResult.deviation = deviation_sum / nb_deviation;
+            _recordResult.frequency = cross->Freq();
             result_found = true;
 
             updated = true;
@@ -123,6 +124,10 @@ bool RecordResultComputation::getResult(RecordResult &recordResult, int16_t * bu
             UpdateDeviation(d);
         }
 
+        recordResult.octave = _recordResult.octave;
+        recordResult.note = _recordResult.note;
+        recordResult.deviation = _recordResult.deviation;
+        recordResult.frequency = _recordResult.frequency;
         return true;
     }
     else {

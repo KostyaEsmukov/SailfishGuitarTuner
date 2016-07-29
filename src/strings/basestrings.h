@@ -35,7 +35,7 @@ public:
 
         int choice = 0;
         double choiceDelta;
-        for (int i = 0; i < cnt-1; i++) {
+        for (int i = 0; i < cnt; i++) {
             double curDelta = (noteFreqs[i] - recordResult.frequency);
             if (curDelta < 0) curDelta *= -1.0;
 

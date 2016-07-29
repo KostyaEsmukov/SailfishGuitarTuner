@@ -46,6 +46,7 @@ private:
     double deviation_values[nbDeviationValues];
 
     bool result_found;
+    RecordResult _recordResult;
 
 
     void Reset();
