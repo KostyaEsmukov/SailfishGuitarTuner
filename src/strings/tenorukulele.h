@@ -11,7 +11,7 @@ class TenorUkulele : public BaseStrings
 public:
     explicit TenorUkulele(QObject *parent = 0) : BaseStrings(parent) {
         _notes = new int[4]{NOTE_G, NOTE_C, NOTE_E, NOTE_A};
-        _octaves = new int[4]{0, 1, 1, 1};
+        _octaves = new int[4]{4, 4, 4, 4};
     }
     ~TenorUkulele() {
         delete _notes;

@@ -32,7 +32,6 @@ public:
         const double * noteFreqs = this->getFreqs();
         const int cnt = this->getStringsCount();
 
-
         for (int i = 0; i < cnt-1; i++) {
             if (noteFreqs[i] - EPS <= recordResult.frequency
                     && recordResult.frequency <= noteFreqs[i+1] + EPS) {
@@ -77,6 +76,7 @@ public:
     const double* getFreqs() {
         if (_freqs == nullptr) {
             Scale scale;
+            scale.ConstructEqualTemperament();
 
             const int * notes = this->getNotes();
             const int * octaves = this->getOctaves();
