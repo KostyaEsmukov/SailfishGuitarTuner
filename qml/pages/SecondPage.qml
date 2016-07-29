@@ -105,13 +105,6 @@ Page {
             y: parent.height * 0.08
         }
 
-        Tuner {
-            x:0
-            y:0
-            height: parent.height / 2
-            width: parent.width
-        }
-
         Image {
             id: ukuHead
             source: "img/Ukulele1.png"
