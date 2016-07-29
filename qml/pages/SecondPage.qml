@@ -37,6 +37,7 @@ import "../Views"
 Page {
 
     id: page
+    property bool started: false
 
     Wrapper {
         id: wrapper
@@ -52,12 +53,24 @@ Page {
 
 
     function onFreqTick() {
+        if (!started) {
+            wrapper.getRecordFacade().startRecord();
+            started = true;
+        }
+
         var r = wrapper.getStringsResult();
-        tuner.needleAngle = 90 * r.deviation
+        if (r.active) {
+            tuner.needleAngle = 90 * r.deviation
+        } else {
+            tuner.needleAngle = 0;
+        }
+
         for (var i = 0; i < 4; i++) {
             indicators[i].color = Theme.primaryColor
         }
-        indicators[r.stringIdx].color = Theme.highlightBackgroundColor;
+        if (r.active) {
+            indicators[r.stringIdx].color = 'white';
+        }
     }
 
     Timer {

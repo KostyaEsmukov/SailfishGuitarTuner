@@ -35,6 +35,8 @@ QStringsResult * Wrapper::getStringsResult() {
         r->active = false;
 
     } else {
+        qWarning() << recordResult.frequency;
+
         StringsResult stringsResult;
         _activeStrings->getResult(recordResult, stringsResult);
         r->active = true;
