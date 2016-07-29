@@ -58,7 +58,7 @@ Page {
     property list<Button> indicators
 
     Button {
-        id: string4
+        id: string3
         x: ukuHead.x + ukuHead.width
         y: ukuHead.y + ukuHead.height * 0.55
         width: 100
@@ -68,7 +68,7 @@ Page {
     }
 
     Button {
-        id: string3
+        id: string2
         x: ukuHead.x + ukuHead.width
         y: ukuHead.y + ukuHead.height * 0.25
         width: 100
@@ -77,7 +77,7 @@ Page {
         color: Theme.highlightBackgroundColor
     }
     Button {
-        id: string2
+        id: string1
         x: ukuHead.x - width
         y: ukuHead.y + ukuHead.height * 0.25
         width: 100
@@ -86,7 +86,7 @@ Page {
         color: Theme.highlightBackgroundColor
     }
     Button {
-        id: string1
+        id: string0
         x: ukuHead.x - width
         y: ukuHead.y + ukuHead.height * 0.55
         width: 100
@@ -95,10 +95,7 @@ Page {
         color: Theme.primaryColor//down ? Theme.primaryColor : Theme.highlightBackgroundColor
     }
     Component.onCompleted: {
-        indicators = [string1, string2, string3, string4]
-    }
-    Text{
-        text: qsTr("KLPL")
+        indicators = [string0, string1, string2, string3]
     }
 }
 

@@ -55,9 +55,9 @@ Page {
 
     // guitar strigs buttons
     Button {
-        id: stringD
+        id: string0
         x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.55
+        y: ukuHead.y + ukuHead.height * 0.61-height/2
         width: 100
         height: 100
         text: "E"
@@ -65,9 +65,9 @@ Page {
     }
 
     Button {
-        id: stringA
+        id: string1
         x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.25
+        y: ukuHead.y + ukuHead.height * 0.435- height/2
         width: 100
         height: 100
         text: "A"
@@ -76,9 +76,9 @@ Page {
 
 
     Button {
-        id: stringE
+        id: string2
         x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.75
+        y: ukuHead.y + ukuHead.height * 0.26 - height/2
         width: 100
         height: 100
         text: "D"
@@ -86,9 +86,9 @@ Page {
     }
 
     Button {
-        id: stringG
+        id: string3
         x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.25
+        y: string2.y
         width: 100
         height: 100
         text: "G"
@@ -96,9 +96,9 @@ Page {
     }
 
     Button {
-        id: stringB
+        id: string4
         x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.55
+        y: string1.y
         width: 100
         height: 100
         text: "B"
@@ -107,13 +107,19 @@ Page {
 
 
     Button {
-        id: stringE2
+        id: string5
         x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.75
+        y: string0.y
         width: 100
         height: 100
         text: "E"
         color: Theme.highlightBackgroundColor
+    }
+
+    property list<Button> strings
+    Component.onCompleted: {
+        strings = [string0, string1, string2,
+                   string3, string4, string5]
     }
 }
 

@@ -27,11 +27,4 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
-<context>
-    <name>SecondPage</name>
-    <message>
-        <source>KLPL</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
 </TS>
