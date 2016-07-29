@@ -21,7 +21,6 @@ bool RecordFacade::isRecording() {
     return _recorder->isRecording();
 }
 
-int RecordFacade::getFrequency() {
-    // todo fft
-    return 123;
+bool RecordFacade::getResult(RecordResult &recordResult);
+    return false;
 }

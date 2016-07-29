@@ -12,6 +12,11 @@
 
 #include "recorder.h"
 
+struct RecordResult {
+    double deviation, frequency;
+    int note, octave;
+};
+
 class RecordFacade : public QObject
 {
     Q_OBJECT
@@ -23,9 +28,8 @@ public:
 
     Q_INVOKABLE void startRecord();
     Q_INVOKABLE void stopRecord();
-    Q_INVOKABLE int getFrequency();
+    Q_INVOKABLE bool getResult(RecordResult &recordResult);
     Q_INVOKABLE bool isRecording();
-
 
 
 private:
