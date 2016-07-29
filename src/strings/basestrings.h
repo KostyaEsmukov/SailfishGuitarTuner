@@ -32,43 +32,28 @@ public:
         const double * noteFreqs = this->getFreqs();
         const int cnt = this->getStringsCount();
 
+
+        int choice = 0;
+        double choiceDelta;
         for (int i = 0; i < cnt-1; i++) {
-            if (noteFreqs[i] - EPS <= recordResult.frequency
-                    && recordResult.frequency <= noteFreqs[i+1] + EPS) {
+            double curDelta = (noteFreqs[i] - recordResult.frequency);
+            if (curDelta < 0) curDelta *= -1.0;
 
-                double d = noteFreqs[i+1] - noteFreqs[i];
-
-                if (recordResult.frequency < noteFreqs[i] + d/2) {
-                    stringsResult.stringIdx = i;
-                    stringsResult.deviation = (recordResult.frequency - noteFreqs[i]) / (d/2);
-                } else {
-                    stringsResult.stringIdx = i + 1;
-                    stringsResult.deviation = (recordResult.frequency - noteFreqs[i+1]) / (d/2);
-                }
-                break;
+            if (i == 0 || curDelta < choiceDelta) {
+                choiceDelta = curDelta;
+                choice = i;
             }
         }
 
-
-        if (noteFreqs[cnt-1] + EPS <= recordResult.frequency) {
-            stringsResult.stringIdx = cnt-1;
-            stringsResult.deviation = (recordResult.frequency - noteFreqs[cnt-1])
-                    / ((noteFreqs[cnt-1] - noteFreqs[cnt-2]) / 2);
-            if (stringsResult.deviation > 1)
-                stringsResult.deviation = 1;
-            return;
-        }
+        stringsResult.stringIdx = choice;
+        stringsResult.deviation = (recordResult.frequency - noteFreqs[choice]) / 30.0;
 
 
-        // if (recordResult.frequency <= noteFreqs[0] - EPS) {
-            stringsResult.stringIdx = 0;
-            stringsResult.deviation = (recordResult.frequency - noteFreqs[0])
-                    / ((noteFreqs[1] - noteFreqs[0]) / 2);
-            if (stringsResult.deviation < -1)
-                stringsResult.deviation = -1;
+        if (stringsResult.deviation < -1)
+            stringsResult.deviation = -1;
 
-            return;
-        // }
+        if (stringsResult.deviation > 1)
+            stringsResult.deviation = 1;
 
     }
 
