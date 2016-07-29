@@ -31,43 +31,16 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../Views"
 
 Page {
+
     id: page
-    property double needleAngle: 0
-
-    Image {
-        property double origWidth: 508
-        property double origHeight: 267
-        property double imgAspectRatio: origHeight / origWidth
-        id: gauge
-        width: page.width * 0.9
-        height: width * imgAspectRatio
-        x: page.width / 2 - width / 2
-        y: page.height / 2 - height
-        source: "img/gauge1.png"
-        smooth: true
-
-
-    }
-
-    Image {
-        property double origWidth: 104
-        property double origHeight: 591
-        property double imgAspectRatio: origWidth / origHeight
-
-        id: needle
-        height: gauge.height * 0.9
-        width: height * imgAspectRatio
-        x: parent.width / 2 - width / 2
-        y: parent.height / 2 - height
-        source: (Math.abs(needleAngle) < 10) ? "img/NeedleGreen.png" : "img/NeedleRed.png"
-        smooth: true
-        transform: Rotation {
-            origin.x: needle.width / 2
-            origin.y: needle.height*0.87
-            angle: needleAngle
-        }
+    Tuner {
+        x:0
+        y:0
+        height: parent.height / 2
+        width: parent.width
     }
 
     Image {
@@ -80,39 +53,12 @@ Page {
         smooth: true
     }
 
+
     // guitar strigs buttons
-    Button {
-        id: stringG
-        x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.55
-        width: 100
-        height: 100
-        text: "G"
-        color: Theme.highlightBackgroundColor
-    }
+    property list<Button> indicators
 
     Button {
-        id: stringC
-        x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.25
-        width: 100
-        height: 100
-        text: "C"
-        color: Theme.highlightBackgroundColor
-    }
-
-    Button {
-        id: stringE
-        x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.25
-        width: 100
-        height: 100
-        text: "E"
-        color: Theme.highlightBackgroundColor
-    }
-
-    Button {
-        id: stringA
+        id: string4
         x: ukuHead.x + ukuHead.width
         y: ukuHead.y + ukuHead.height * 0.55
         width: 100
@@ -121,24 +67,38 @@ Page {
         color: Theme.highlightBackgroundColor
     }
 
-
-    //debug buttons
-    Button{
-        x: 100
-        y: 100
+    Button {
+        id: string3
+        x: ukuHead.x + ukuHead.width
+        y: ukuHead.y + ukuHead.height * 0.25
         width: 100
         height: 100
-        text: "-"
-        onClicked: needleAngle -= 5
+        text: "E"
+        color: Theme.highlightBackgroundColor
     }
-
-    Button{
-        x: 300
-        y: 100
+    Button {
+        id: string2
+        x: ukuHead.x - width
+        y: ukuHead.y + ukuHead.height * 0.25
         width: 100
         height: 100
-        text: "+"
-        onClicked: needleAngle += 5
+        text: "C"
+        color: Theme.highlightBackgroundColor
+    }
+    Button {
+        id: string1
+        x: ukuHead.x - width
+        y: ukuHead.y + ukuHead.height * 0.55
+        width: 100
+        height: 100
+        text: "G"
+        color: Theme.primaryColor//down ? Theme.primaryColor : Theme.highlightBackgroundColor
+    }
+    Component.onCompleted: {
+        indicators = [string1, string2, string3, string4]
+    }
+    Text{
+        text: qsTr("KLPL")
     }
 }
 

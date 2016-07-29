@@ -50,6 +50,11 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/harbour-guitartuner-de.ts
 
+DISTFILES += \
+    qml/pages/ClassicGuitar.qml \
+    qml/Views/Tuner.qml
+
+RESOURCES +=
 
 HEADERS += \
     src/recorder.h \
@@ -66,12 +71,6 @@ HEADERS += \
 
 QT += multimedia
 
-DISTFILES += \
-    qml/pages/ClassicGuitar.qml \
-    qml/pages/maks.qml \
-    qml/pages/part.qml \
-    qml/pages/part2.qml
 
-RESOURCES +=
 
 

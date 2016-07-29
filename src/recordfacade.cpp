@@ -1,6 +1,7 @@
 #include "recordfacade.h"
 
 RecordFacade::RecordFacade(QObject *parent) : QObject(parent) {
+
     buf = new int16_t[bufSize];
 
     _recorder = new Recorder(this);

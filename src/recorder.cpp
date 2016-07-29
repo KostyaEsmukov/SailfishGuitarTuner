@@ -15,7 +15,6 @@ Recorder::~Recorder() {
 void Recorder::startRecord() {
     _recording = true;
 
-    pa_simple *p_play = NULL;
     pa_sample_spec p_spec;
 
     p_spec.format = PA_SAMPLE_S16NE;

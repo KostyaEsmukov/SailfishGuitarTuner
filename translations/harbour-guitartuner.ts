@@ -11,10 +11,6 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Show Page 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>UI Template</source>
         <translation type="unfinished"></translation>
     </message>
@@ -27,7 +23,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Dinamic Load</source>
+        <source>Show Pagehhhhh 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SecondPage</name>
+    <message>
+        <source>KLPL</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

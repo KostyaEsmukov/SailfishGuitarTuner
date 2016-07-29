@@ -32,7 +32,9 @@ public:
 
 
 private:
+
     static const int bufSize = 512;
+
     int16_t * buf;
 
     Recorder *_recorder;
