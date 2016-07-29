@@ -45,6 +45,14 @@ Page {
                 text: qsTr("Show Page 2")
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
             }
+            MenuItem {
+                text: qsTr("Show Page 3")
+                onClicked: pageStack.push(Qt.resolvedUrl("ClassicGuitar.qml"))
+            }
+            MenuItem {
+                text: qsTr("Dinamic Load")
+                onClicked: pageStack.push(Qt.resolvedUrl("maks.qml"))
+            }
         }
 
         // Tell SilicaFlickable the height of its content.
