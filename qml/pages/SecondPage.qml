@@ -69,7 +69,7 @@ Page {
             indicators[i].color = Theme.primaryColor
         }
         if (r.active) {
-            indicators[r.stringIdx].color = 'white';
+            indicators[r.stringIdx].color = Theme.highlightBackgroundColor;
         }
     }
 
