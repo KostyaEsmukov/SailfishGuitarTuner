@@ -34,72 +34,110 @@ import Sailfish.Silica 1.0
 import "../Views"
 
 Page {
-
     id: page
-    Tuner {
-        x:0
-        y:0
-        height: parent.height / 2
-        width: parent.width
-    }
 
-    Image {
-        id: ukuHead
-        source: "img/Ukulele1.png"
-        height: parent.height / 2.2
-        width: height * 0.77
-        x: parent.width / 2 - width / 2
-        y: parent.height - height
-        smooth: true
-    }
+    property string temperamentName: "Standart tenor"
 
-
-    // guitar strigs buttons
     property list<Button> indicators
+    property int someId: 0
 
-    Button {
-        id: string3
-        x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.55
-        width: 100
-        height: 100
-        text: "A"
-        color: Theme.highlightBackgroundColor
+    function setLight(id){
+        for(var i = 0; i < 4; i++)
+            indicators[i].color = Theme.highlightBackgroundColor
+        indicators[id].color = Theme.primaryColor
     }
 
-    Button {
-        id: string2
-        x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.25
-        width: 100
-        height: 100
-        text: "E"
-        color: Theme.highlightBackgroundColor
-    }
-    Button {
-        id: string1
-        x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.25
-        width: 100
-        height: 100
-        text: "C"
-        color: Theme.highlightBackgroundColor
-    }
-    Button {
-        id: string0
-        x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.55
-        width: 100
-        height: 100
-        text: "G"
-        color: Theme.primaryColor//down ? Theme.primaryColor : Theme.highlightBackgroundColor
-    }
-    Component.onCompleted: {
-        indicators = [string0, string1, string2, string3]
+    SilicaFlickable {
+        anchors.fill: parent
+        PullDownMenu{
+            MenuItem{
+                text:qsTr("Ukulele temperaments")
+                onClicked: pageStack.push(Qt.resolvedUrl("Stroi.qml"), {head: text, type: 4})
+            }
+            MenuItem{
+                text:qsTr("Guitar temperaments")
+                onClicked: pageStack.push(Qt.resolvedUrl("Stroi.qml"), {head: text, type : 6})
+            }
+            MenuItem{
+                text:qsTr("Chande Light")
+                onClicked: {
+                    if (someId == 3)
+                        someId = 0
+                    else
+                        someId++
+                    setLight(someId)
+                }
+
+            }
+        }
+
+        Text{
+            text : temperamentName
+            font.pixelSize: 65
+            color: Theme.primaryColor
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: parent.height * 0.08
+        }
+
+        Tuner {
+            x:0
+            y:0
+            height: parent.height / 2
+            width: parent.width
+        }
+
+        Image {
+            id: ukuHead
+            source: "img/Ukulele1.png"
+            height: parent.height / 2.2
+            width: height * 0.77
+            x: parent.width / 2 - width / 2
+            y: parent.height - height
+            smooth: true
+        }
+
+
+        // guitar strigs buttons
+        Button {
+            id: string3
+            x: ukuHead.x + ukuHead.width
+            y: ukuHead.y + ukuHead.height * 0.55
+            width: 100
+            height: 100
+            text: "A"
+            color: Theme.highlightBackgroundColor
+        }
+
+        Button {
+            id: string2
+            x: ukuHead.x + ukuHead.width
+            y: ukuHead.y + ukuHead.height * 0.25
+            width: 100
+            height: 100
+            text: "E"
+            color: Theme.highlightBackgroundColor
+        }
+        Button {
+            id: string1
+            x: ukuHead.x - width
+            y: ukuHead.y + ukuHead.height * 0.25
+            width: 100
+            height: 100
+            text: "C"
+            color: Theme.highlightBackgroundColor
+        }
+        Button {
+            id: string0
+            x: ukuHead.x - width
+            y: ukuHead.y + ukuHead.height * 0.55
+            width: 100
+            height: 100
+            text: "G"
+            color: Theme.highlightBackgroundColor
+        }
+        Component.onCompleted: {
+            indicators = [string0, string1, string2, string3]
+        }
+
     }
 }
-
-
-
-
-

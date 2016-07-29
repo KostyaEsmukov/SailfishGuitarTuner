@@ -4,8 +4,9 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
-        <translation>Mein Cover</translation>
+        <source>Guiteculela 
+ Tune :)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -24,6 +25,21 @@
     </message>
     <message>
         <source>Show Pagehhhhh 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SecondPage</name>
+    <message>
+        <source>Ukulele temperaments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guitar temperaments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chande Light</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
