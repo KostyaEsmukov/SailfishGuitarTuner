@@ -32,7 +32,7 @@ public:
 
 
 private:
-    static const int bufSize = 2048;
+    static const int bufSize = 512;
     int16_t * buf;
 
     int16_t maxV = 0;

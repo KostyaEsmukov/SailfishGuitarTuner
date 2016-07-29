@@ -47,8 +47,10 @@ void Recorder::stopRecord() {
 }
 
 int Recorder::getData(int16_t * buf, int bufSize) {
-    int read = pa_simple_read(p_record, (void*) buf, bufSize << 1, NULL);
-
-    return read;
+    int err = pa_simple_read(p_record, (void*) buf, bufSize << 1, NULL);
+    if (err < 0) {
+        qWarning() << "pulseaudio read error " << err;
+    }
+    return bufSize;
 }
 
