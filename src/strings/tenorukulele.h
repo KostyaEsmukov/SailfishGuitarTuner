@@ -1,24 +1,26 @@
-#ifndef STANDARDGUITAR_H
-#define STANDARDGUITAR_H
+#ifndef TENORUKULELE_H
+#define TENORUKULELE_H
+
 
 #include "basestrings.h"
 #include "../notes.h"
 
-class StandardGuitar : public BaseStrings
+
+class TenorUkulele : public BaseStrings
 {
 public:
-    explicit StandardGuitar(QObject *parent = 0) : BaseStrings(parent) {
-        _notes = new int[6]{NOTE_E, NOTE_A, NOTE_D, NOTE_G, NOTE_B, NOTE_E};
-        _octaves = new int[6]{-1, -1, 0, 0, 0, 1};
+    explicit TenorUkulele(QObject *parent = 0) : BaseStrings(parent) {
+        _notes = new int[4]{NOTE_G, NOTE_C, NOTE_E, NOTE_A};
+        _octaves = new int[4]{0, 1, 1, 1};
     }
-    ~StandardGuitar() {
+    ~TenorUkulele() {
         delete _notes;
         delete _octaves;
     }
 
 protected:
     virtual const int getStringsCount() {
-        return 6;
+        return 4;
     }
 
     virtual const int* getNotes() {
@@ -35,4 +37,4 @@ private:
 
 };
 
-#endif // STANDARDGUITAR_H
+#endif // TENORUKULELE_H

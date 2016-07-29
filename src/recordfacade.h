@@ -35,8 +35,6 @@ private:
     static const int bufSize = 512;
     int16_t * buf;
 
-    int16_t maxV = 0;
-
     Recorder *_recorder;
     RecordResultComputation *_recordResultComputation;
 

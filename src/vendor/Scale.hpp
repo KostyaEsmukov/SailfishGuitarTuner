@@ -62,8 +62,9 @@ class Scale {
 	/// Set ref freq for la4
 	void SetLa(double la);
 
-	/// get note frequency
-	double GetNoteFreq(int note, int octave) const;
+
+    /// get note frequency
+    double GetNoteFreq(int note, int octave) const;
 
 	/**
 	 * Find nearest note, octave, and deviation

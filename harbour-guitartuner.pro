@@ -22,9 +22,11 @@ SOURCES += src/harbour-guitartuner.cpp \
     src/vendor/LinearFilter.cpp \
     src/vendor/ZeroCross.cpp \
     src/vendor/Scale.cpp \
-    src/strings/basestrings.cpp \
     src/strings/standardguitar.cpp \
-    src/recordresultcomputation.cpp
+    src/recordresultcomputation.cpp \
+    src/notes.cpp \
+    src/strings/tenorukulele.cpp \
+    src/wrapper.cpp
 
 OTHER_FILES += qml/harbour-guitartuner.qml \
     qml/cover/CoverPage.qml \
@@ -57,7 +59,10 @@ HEADERS += \
     src/vendor/Scale.hpp \
     src/strings/basestrings.h \
     src/strings/standardguitar.h \
-    src/recordresultcomputation.h
+    src/recordresultcomputation.h \
+    src/notes.h \
+    src/strings/tenorukulele.h \
+    src/wrapper.h
 
 QT += multimedia
 
