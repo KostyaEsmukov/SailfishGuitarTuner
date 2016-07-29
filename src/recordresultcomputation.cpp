@@ -87,7 +87,7 @@ void RecordResultComputation::SetNotFound()
     }
 }
 
-bool RecordResultComputation::getResult(RecordResult &recordResult, char * buf, int read) {
+bool RecordResultComputation::getResult(RecordResult &recordResult, int16_t * buf, int read) {
 
     while (read--) ComputeFrame(*buf++);
 

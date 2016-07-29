@@ -14,6 +14,8 @@ TARGET = harbour-guitartuner
 
 CONFIG += c++11 sailfishapp
 
+PKGCONFIG += libpulse-simple audioresource
+
 SOURCES += src/harbour-guitartuner.cpp \
     src/recorder.cpp \
     src/recordfacade.cpp \

@@ -21,7 +21,7 @@ public:
     RecordResultComputation();
     ~RecordResultComputation();
 
-    bool getResult(RecordResult &recordResult, char * buf, int read);
+    bool getResult(RecordResult &recordResult, int16_t * buf, int read);
 
 private:
 

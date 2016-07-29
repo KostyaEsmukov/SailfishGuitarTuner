@@ -9,6 +9,15 @@
 
 #include <QDebug>
 
+extern "C" {
+#include <pulse/simple.h>
+}
+
+#define name_(x) #x
+#define name(x) name_(x)
+#define NAME name(TARGET)
+
+
 class Recorder : public QObject
 {
     Q_OBJECT
@@ -19,14 +28,13 @@ public:
 
     void startRecord();
     void stopRecord();
-    int getData(char * buf, int bufSize);
+    int getData(int16_t * buf, int bufSize);
     bool isRecording() { return _recording; }
 
     static const int rate = 16000;
 
 private:
-    QAudioInput *_audioInput;
-    QIODevice *_ioDevice;
+    pa_simple *p_record;
 
     bool _recording;
 

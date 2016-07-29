@@ -33,7 +33,9 @@ public:
 
 private:
     static const int bufSize = 2048;
-    char * buf;
+    int16_t * buf;
+
+    int16_t maxV = 0;
 
     Recorder *_recorder;
     RecordResultComputation *_recordResultComputation;

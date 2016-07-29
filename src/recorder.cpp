@@ -3,65 +3,52 @@
 Recorder::Recorder(QObject *parent) : QObject(parent) {
     _recording = false;
 
-    QAudioFormat format;
-    format.setSampleRate(Recorder::rate);
-    format.setChannelCount(1);
-    format.setSampleSize(8);
-    format.setCodec("audio/pcm");
-    format.setByteOrder(QAudioFormat::LittleEndian);
-    format.setSampleType(QAudioFormat::UnSignedInt);
-
-    QAudioDeviceInfo info = QAudioDeviceInfo::defaultInputDevice();
-    if (!info.isFormatSupported(format)) {
-      qWarning() << "Default format not supported, trying to use the nearest.";
-      format = info.nearestFormat(format);
-    }
-
-    _audioInput = new QAudioInput(format, this);
-
-    connect(_audioInput, SIGNAL(stateChanged(QAudio::State)), this, SLOT(handleStateChanged(QAudio::State)));
 }
 
 Recorder::~Recorder() {
-    delete _audioInput;
+
+    if (p_record) {
+        pa_simple_free(p_record);
+    }
 }
 
 void Recorder::startRecord() {
     _recording = true;
-    _ioDevice = _audioInput->start();
+
+    pa_simple *p_play = NULL;
+    pa_sample_spec p_spec;
+
+    p_spec.format = PA_SAMPLE_S16NE;
+    p_spec.channels = 1;
+    p_spec.rate = Recorder::rate;
+
+    p_record = pa_simple_new(
+            NULL,
+            NAME,
+            PA_STREAM_RECORD,
+            NULL,
+            "Tuner record",
+            &p_spec,
+            NULL,
+            NULL,
+            NULL
+            );
+
 }
 
 void Recorder::stopRecord() {
     _recording = false;
-    _audioInput->stop();
+
+    if (p_record) {
+        pa_simple_free(p_record);
+    }
+
+    p_record = nullptr;
 }
 
-int Recorder::getData(char * buf, int bufSize) {
-    int read = _ioDevice->read(buf, bufSize);
+int Recorder::getData(int16_t * buf, int bufSize) {
+    int read = pa_simple_read(p_record, (void*) buf, bufSize << 1, NULL);
+
     return read;
 }
 
-void Recorder::handleStateChanged(QAudio::State newState)
-{
-    switch (newState) {
-        case QAudio::StoppedState:
-            if (_audioInput->error() != QAudio::NoError) {
-                // Error handling
-                qWarning() << "Error handling";
-            } else {
-                // Finished recording
-                qWarning() << "Finished recording";
-            }
-            break;
-
-        case QAudio::ActiveState:
-            // Started recording - read from IO device
-            qWarning() << "Started recording - read from IO device";
-            break;
-
-        default:
-            // ... other cases as appropriate
-            qWarning() << "... other cases as appropriate";
-            break;
-    }
-}

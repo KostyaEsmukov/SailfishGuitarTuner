@@ -91,6 +91,7 @@ Page {
             Text {
                  id: freqText
                  text: frequency
+                 color: 'white'
              }
 
             Button {
