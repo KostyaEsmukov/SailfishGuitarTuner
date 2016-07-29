@@ -35,9 +35,10 @@ import harbour.guitartuner.wrapper 1.0
 import "../Views"
 
 Page {
-
     id: page
+
     property bool started: false
+    property list<Button> indicators
 
     Wrapper {
         id: wrapper
@@ -80,64 +81,88 @@ Page {
         onTriggered: onFreqTick()
     }
 
-
-    Image {
-        id: ukuHead
-        source: "img/Ukulele1.png"
-        height: parent.height / 2.2
-        width: height * 0.77
-        x: parent.width / 2 - width / 2
-        y: parent.height - height
-        smooth: true
-    }
+    property string temperamentName: "Standart tenor"
 
 
-    // guitar strigs buttons
-    property list<Button> indicators
+    SilicaFlickable {
+        anchors.fill: parent
+        PullDownMenu{
+            MenuItem{
+                text:qsTr("Ukulele temperaments")
+                onClicked: pageStack.push(Qt.resolvedUrl("Stroi.qml"), {head: text, type: 4})
+            }
+            MenuItem{
+                text:qsTr("Guitar temperaments")
+                onClicked: pageStack.push(Qt.resolvedUrl("Stroi.qml"), {head: text, type : 6})
+            }
+        }
 
-    Button {
-        id: string3
-        x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.55
-        width: 100
-        height: 100
-        text: "A"
-        color: Theme.highlightBackgroundColor
-    }
+        Text{
+            text : temperamentName
+            font.pixelSize: 65
+            color: Theme.primaryColor
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: parent.height * 0.08
+        }
 
-    Button {
-        id: string2
-        x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.25
-        width: 100
-        height: 100
-        text: "E"
-        color: Theme.highlightBackgroundColor
-    }
-    Button {
-        id: string1
-        x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.25
-        width: 100
-        height: 100
-        text: "C"
-        color: Theme.highlightBackgroundColor
-    }
-    Button {
-        id: string0
-        x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.55
-        width: 100
-        height: 100
-        text: "G"
-        color: Theme.highlightBackgroundColor // Theme.primaryColordown ? Theme.primaryColor : Theme.highlightBackgroundColor
-    }
-    Component.onCompleted: {
-        indicators = [string0, string1, string2, string3]
+        Tuner {
+            x:0
+            y:0
+            height: parent.height / 2
+            width: parent.width
+        }
+
+        Image {
+            id: ukuHead
+            source: "img/Ukulele1.png"
+            height: parent.height / 2.2
+            width: height * 0.77
+            x: parent.width / 2 - width / 2
+            y: parent.height - height
+            smooth: true
+        }
+
+
+        // guitar strigs buttons
+        Button {
+            id: string3
+            x: ukuHead.x + ukuHead.width
+            y: ukuHead.y + ukuHead.height * 0.55
+            width: 100
+            height: 100
+            text: "A"
+            color: Theme.highlightBackgroundColor
+        }
+
+        Button {
+            id: string2
+            x: ukuHead.x + ukuHead.width
+            y: ukuHead.y + ukuHead.height * 0.25
+            width: 100
+            height: 100
+            text: "E"
+            color: Theme.highlightBackgroundColor
+        }
+        Button {
+            id: string1
+            x: ukuHead.x - width
+            y: ukuHead.y + ukuHead.height * 0.25
+            width: 100
+            height: 100
+            text: "C"
+            color: Theme.highlightBackgroundColor
+        }
+        Button {
+            id: string0
+            x: ukuHead.x - width
+            y: ukuHead.y + ukuHead.height * 0.55
+            width: 100
+            height: 100
+            text: "G"
+            color: Theme.highlightBackgroundColor
+        }
+        Component.onCompleted: {
+            indicators = [string0, string1, string2, string3]
+        }
     }
 }
-
-
-
-
-

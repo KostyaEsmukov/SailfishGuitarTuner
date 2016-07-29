@@ -38,24 +38,5 @@ Item {
             angle: needleAngle
         }
     }
-
-    //debug buttons
-    Button{
-        x: 100
-        y: 100
-        width: 100
-        height: 100
-        text: "-"
-        onClicked: needleAngle -= 5
-    }
-
-    Button{
-        x: 300
-        y: 100
-        width: 100
-        height: 100
-        text: "+"
-        onClicked: needleAngle += 5
-    }
 }
 

@@ -52,7 +52,8 @@ TRANSLATIONS += translations/harbour-guitartuner-de.ts
 
 DISTFILES += \
     qml/pages/ClassicGuitar.qml \
-    qml/Views/Tuner.qml
+    qml/Views/Tuner.qml \
+    qml/pages/Stroi.qml
 
 RESOURCES +=
 
