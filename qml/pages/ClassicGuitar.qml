@@ -72,7 +72,7 @@ Page {
 
     Image {
         id: ukuHead
-        source: "img/Ukulele1.png"
+        source: "img/guitar.png"
         height: parent.height / 2.2
         width: height * 0.77
         x: parent.width / 2 - width / 2
@@ -82,29 +82,9 @@ Page {
 
     // guitar strigs buttons
     Button {
-        id: stringG
+        id: stringD
         x: ukuHead.x - width
         y: ukuHead.y + ukuHead.height * 0.55
-        width: 100
-        height: 100
-        text: "G"
-        color: Theme.highlightBackgroundColor
-    }
-
-    Button {
-        id: stringC
-        x: ukuHead.x - width
-        y: ukuHead.y + ukuHead.height * 0.25
-        width: 100
-        height: 100
-        text: "C"
-        color: Theme.highlightBackgroundColor
-    }
-
-    Button {
-        id: stringE
-        x: ukuHead.x + ukuHead.width
-        y: ukuHead.y + ukuHead.height * 0.25
         width: 100
         height: 100
         text: "E"
@@ -113,11 +93,53 @@ Page {
 
     Button {
         id: stringA
+        x: ukuHead.x - width
+        y: ukuHead.y + ukuHead.height * 0.25
+        width: 100
+        height: 100
+        text: "A"
+        color: Theme.highlightBackgroundColor
+    }
+
+
+    Button {
+        id: stringE
+        x: ukuHead.x - width
+        y: ukuHead.y + ukuHead.height * 0.75
+        width: 100
+        height: 100
+        text: "D"
+        color: Theme.highlightBackgroundColor
+    }
+
+    Button {
+        id: stringG
+        x: ukuHead.x + ukuHead.width
+        y: ukuHead.y + ukuHead.height * 0.25
+        width: 100
+        height: 100
+        text: "G"
+        color: Theme.highlightBackgroundColor
+    }
+
+    Button {
+        id: stringB
         x: ukuHead.x + ukuHead.width
         y: ukuHead.y + ukuHead.height * 0.55
         width: 100
         height: 100
-        text: "A"
+        text: "B"
+        color: Theme.highlightBackgroundColor
+    }
+
+
+    Button {
+        id: stringE2
+        x: ukuHead.x + ukuHead.width
+        y: ukuHead.y + ukuHead.height * 0.75
+        width: 100
+        height: 100
+        text: "E"
         color: Theme.highlightBackgroundColor
     }
 
